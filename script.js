@@ -68,7 +68,7 @@ function changeBackground() {
     currentIndex = (currentIndex + 1) % backgrounds.length;
 }
 
-setInterval(changeBackground, 5000);
+setInterval(changeBackground, 10000);
 changeBackground();
 
 // Event listener for the "Auto-generate CO2 Levels" button
