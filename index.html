@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO₂ Level Detection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="blinking-title">CO₂ Emission Detection</h1>
+        <form id="co2Form">
+            <label for="co2Input">Enter CO₂ Levels (comma-separated):</label>
+            <input type="text" id="co2Input" placeholder="e.g., 400, 410, 415,.." required>
+            <button type="submit">Get Prediction</button>
+            <!-- Added button to auto-generate CO₂ levels -->
+            <button type="button" id="generateBtn">Generate Random CO₂ Levels</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Predictions:</h2>
+            <table class="predictions">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Prediction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>26°C</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>77%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre id="output"></pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

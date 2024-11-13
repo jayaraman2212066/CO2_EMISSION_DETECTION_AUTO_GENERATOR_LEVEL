@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    color: #333;
+    transition: background-image 1s ease-in-out;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.5); /* Increased opacity for better contrast */
+    backdrop-filter: blur(12px); /* Slightly increased blur for a cleaner look */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 400px;
+    max-width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #f0f0f0; /* Brighter text color for visibility */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    color: #00b4d8;
+    font-size: 26px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+h1.blinking-title {
+    animation: blinkColor 1s infinite;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    transition: border-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #00b4d8;
+    box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+    outline: none;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+/* New button for generating random CO₂ levels */
+#generateBtn {
+    background-color: #28a745; /* Green color for generate button */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#generateBtn:hover {
+    background-color: #218838;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#generateBtn:active {
+    transform: translateY(2px);
+}
+
+.hidden {
+    display: none;
+}
+
+pre {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    color: #f0f0f0; /* Bright text color for visibility */
+    overflow-x: auto;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#output {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #00ff7f; /* Bright green for normal CO₂ levels */
+}
+
+table.predictions {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+table.predictions th,
+table.predictions td {
+    padding: 15px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+table.predictions th {
+    background-color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+table.predictions tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+table.predictions tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes blinkColor {
+    0% { color: black; }
+    50% { color: red; }
+    100% { color: black; }
+}
