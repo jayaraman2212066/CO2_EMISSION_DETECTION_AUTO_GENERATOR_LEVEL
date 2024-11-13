@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app --bind 0.0.0.0:5000
+web: gunicorn wsgi:app --bind 0.0.0.0:10000
