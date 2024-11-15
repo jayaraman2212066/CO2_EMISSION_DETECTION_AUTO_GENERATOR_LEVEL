@@ -17,6 +17,15 @@ try:
 except Exception as e:
     print(f"Error loading model: {e}")
     model = None
+# Serve index.html at the root URL
+@app.route('/')
+def serve_index():
+    return send_from_directory('.', 'index.html')
+
+# Serve other static files like CSS and JavaScript
+@app.route('/<path:filename>')
+def serve_static_files(filename):
+    return send_from_directory('.', filename)
 
 # Define a function to preprocess the input data
 def preprocess_input(data):
