@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: co2-emission-detection
+    env: python
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: PORT
+        value: 10000
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: "2"
+    healthCheckPath: /
+    autoDeploy: true 

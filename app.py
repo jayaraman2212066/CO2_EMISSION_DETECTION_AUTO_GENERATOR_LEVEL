@@ -1,5 +1,5 @@
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from tensorflow.keras.models import load_model
 from flask_cors import CORS
 
@@ -12,7 +12,7 @@ CORS(app)
 # Load the pre-trained Keras model
 MODEL_PATH = "co2_keras_model_improved.keras"
 try:
-    model = load_model(MODEL_PATH)
+    model = load_model(MODEL_PATH, compile=False)  # Added compile=False to avoid loading issues
     print("Model loaded successfully.")
 except Exception as e:
     print(f"Error loading model: {e}")
