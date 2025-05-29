@@ -6,6 +6,7 @@ pkgs.mkShell {
     python39Packages.pip
     python39Packages.virtualenv
     postgresql_16
+    postgresql_16.lib
     gcc
   ];
 
