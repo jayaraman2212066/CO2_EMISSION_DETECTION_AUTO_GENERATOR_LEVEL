@@ -6,8 +6,7 @@ buildCommand = "pip install -r requirements.txt"
 startCommand = "python -m gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 2 --threads 2"
 healthcheckPath = "/"
 healthcheckTimeout = 100
-restartPolicyType = "on-failure"
-restartPolicyMaxRetries = 10
+restartPolicy = "always"
 
 [env]
 PYTHON_VERSION = "3.9.18" 
