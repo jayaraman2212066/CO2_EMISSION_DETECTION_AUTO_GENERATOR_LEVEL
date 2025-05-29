@@ -5,7 +5,7 @@ function speakText(text) {
 
 async function getCo2Prediction(co2Data) {
     try {
-        const response = await fetch("http://127.0.0.1:10000/predict", {
+        const response = await fetch("/predict", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -16,17 +16,20 @@ async function getCo2Prediction(co2Data) {
         const result = await response.json();
 
         if (response.ok) {
-            const co2Ppm = result[0].co2_ppm.toFixed(2);
-            const co2Percentage = result[0].co2_percentage.toFixed(2);
-            const co2Level = result[0].co2_level;
-
-            document.getElementById("output").textContent = `Carbon Dioxide Level PPM: ${co2Ppm}\nCarbon Dioxide %: ${co2Percentage}\nCarbon Dioxide Level: ${co2Level}`;
-            speakText(`Carbon Dioxide Level is ${co2Level}.and  Carbon Dioxide in  PPM level is ${co2Ppm}, which is ${co2Percentage} percent.`);
+            // Update the table cells with the prediction results
+            document.getElementById("co2PpmValue").textContent = result[0].co2_ppm.toFixed(2);
+            document.getElementById("co2PercentageValue").textContent = result[0].co2_percentage.toFixed(2) + "%";
+            document.getElementById("co2LevelValue").textContent = result[0].co2_level;
+            // Optionally, hide the output pre or clear it
+            document.getElementById("output").textContent = "";
+            speakText(`Carbon Dioxide Level is ${result[0].co2_level}. Carbon Dioxide in PPM level is ${result[0].co2_ppm.toFixed(2)}, which is ${result[0].co2_percentage.toFixed(2)} percent.`);
         } else {
             console.error("Error:", result.error);
+            document.getElementById("output").textContent = result.error;
         }
     } catch (error) {
         console.error("Failed to fetch prediction:", error);
+        document.getElementById("output").textContent = "Failed to fetch prediction.";
     }
 }
 
