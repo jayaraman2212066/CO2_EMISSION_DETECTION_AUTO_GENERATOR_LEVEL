@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the rest of the application code into the container
-COPY .
+COPY . /app
 
 # Expose the port the application listens on (Assuming Flask/Gunicorn default is 5000, adjust if needed)
 EXPOSE $PORT
