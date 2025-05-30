@@ -22,4 +22,4 @@ COPY . /app
 EXPOSE $PORT
 
 # Define the command to run your application using Gunicorn
-CMD exec gunicorn --bind 0.0.0.0:$PORT --timeout 120 --workers 2 --threads 2 app:app 
+CMD ["/bin/bash", "-c", "gunicorn --bind 0.0.0.0:$PORT --timeout 120 --workers 2 --threads 2 app:app"] 
