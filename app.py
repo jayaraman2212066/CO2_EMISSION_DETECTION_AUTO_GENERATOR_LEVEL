@@ -5,6 +5,7 @@ from flask_cors import CORS
 from models import db, Prediction
 from config import Config
 import tensorflow as tf
+import os # Import os module
 
 # Set TensorFlow logging level
 tf.get_logger().setLevel('ERROR')
@@ -22,12 +23,22 @@ with app.app_context():
     db.create_all()
 
 # Load the pre-trained Keras model
-try:
-    model = load_model(Config.MODEL_PATH, compile=False, safe_mode=False)
-    print("Model loaded successfully.")
-except Exception as e:
-    print(f"Error loading model: {e}")
-    model = None
+print("Attempting to load model from:", Config.MODEL_PATH) # Log model path
+if not os.path.exists(Config.MODEL_PATH): # Check if file exists
+    print("Error: Model file NOT found at path:", Config.MODEL_PATH)
+else:
+    print("Model file FOUND at path:", Config.MODEL_PATH)
+    try:
+        # Try loading with compile=False and safe_mode=False
+        model = load_model(Config.MODEL_PATH, compile=False, safe_mode=False)
+        print("Model loaded successfully.")
+    except Exception as e:
+        print(f"Error loading model during startup: {e}") # More specific error message
+        # Log the full traceback for more details
+        import traceback
+        print("Traceback:")
+        traceback.print_exc()
+        model = None # Ensure model is None if loading fails
 
 # Serve index.html at the root URL
 @app.route('/')
