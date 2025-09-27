@@ -4,14 +4,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///co2_predictions.db')
+    # Database configuration - Force SQLite for free deployment
+    database_url = os.getenv('DATABASE_URL', 'sqlite:///co2_predictions.db')
+    if database_url.startswith('postgres://'):
+        database_url = 'sqlite:///co2_predictions.db'
+    SQLALCHEMY_DATABASE_URI = database_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ENGINE_OPTIONS = {
-        'pool_timeout': 20,
-        'pool_recycle': -1,
-        'pool_pre_ping': True
-    }
     
     # Model configuration
     MODEL_PATH = "co2_keras_model_improved.keras"

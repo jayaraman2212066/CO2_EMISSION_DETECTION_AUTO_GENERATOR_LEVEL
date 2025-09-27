@@ -10,7 +10,5 @@ services:
         value: 3.9.18
       - key: TF_CPP_MIN_LOG_LEVEL
         value: "3"
-      - key: DATABASE_URL
-        value: sqlite:///co2_predictions.db
     healthCheckPath: /
     autoDeploy: true 
